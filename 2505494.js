@@ -20,7 +20,22 @@ function startScanner() {
         {},
         function (text) {
             const place = JSON.parse(text);
+           
+
+            // move marker
             showMarkerAt(place.top, place.left);
+
+            // show inventory details (FROM JSON)
+            itemName.innerText = "Name: " + place.name;
+            if (place.inStock) {
+
+                itemStatus.innerText = "In store: Yes";
+                } else {
+                itemStatus.innerText = "In store: No";
+                }
+                itemPrice.innerText = "Price: €" + place.price;
+
+            // stop scanner
             toggleScanner();
         }
     ).catch(function (err) {
